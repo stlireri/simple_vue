@@ -29,15 +29,14 @@ export default {
       this.items.push({name:this.item.name, price:this.item.price});
       this.item = {};
     }
-  },computed: {
-   totalPrice(){
-     var total = 0;
-     this.items.forEach((item) => {
-       total+=parseInt(item.price);
-     });
-     return total;
-   },
-  }, 
+  },watch: {
+    items(){
+      this.totalPrice = 0;
+      this.items.forEach((item) => {
+        this.totalPrice+=parseInt(item.price);
+      });
+    }
+      } 
 };
 </script>
 
